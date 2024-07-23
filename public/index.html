@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire d'Inscription-Kiai club brest</title>
+    <link rel="shortcut icon" href="Logo kiai.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select, button {
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        .months-selection {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .months-selection input {
+            width: calc(33.333% - 10px);
+            text-align: center;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Formulaire d'Inscription</h2>
+        <form action="/submit" method="POST" enctype="multipart/form-data">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="nom" required>
+
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="prenom" required>
+
+            <label for="secu">Numéro de sécurité sociale</label>
+            <input type="text" id="secu" name="secu" required>
+
+            <label for="civilite">Civilité</label>
+            <select id="civilite" name="civilite" required>
+                <option value="M.">M.</option>
+                <option value="Mme">Mme</option>
+            </select>
+
+            <label for="dateDeNaissance">Date de Naissance</label>
+            <input type="date" id="dateDeNaissance" name="dateDeNaissance" required>
+
+            <label for="localisation">Addresse</label>
+            <input type="text" id="localisation" name="localisation" required>
+
+            <label for="codePostale">Code postale</label>
+            <input type="number" id="codePostale" name="codePostale" required>
+
+            <label for="Ville">Ville</label>
+            <input type="text" id="Ville" name="Ville" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="tel">Numéro de téléphone</label>
+            <input type="number" id="tel" name="tel" required>
+            
+            <label for="DojoOption">Choisir le dojo</label>
+            <select id="DojoOption" name="DojoOption" required>
+                <option value="Kiai club Brest">Kiai club Brest</option>
+                <option value="Kiai club Locmaria">Kiai club Locmaria</option>
+            </select>
+
+            <label for="paiementOption">Option de Paiement</label>
+            <select id="paiementOption" name="paiementOption" required>
+                <option value="unique">Paiement unique</option>
+                <option value="3x">Paiement en 3 fois</option>
+                <option value="5x">Paiement en 5 fois</option>
+            </select>
+
+
+
+            <div id="monthsSelectionContainer" class="months-selection"></div>
+
+            <label for="file">Joindre certificat médical</label>
+            <input type="file" id="file" name="file">
+
+            <button type="submit">S'inscrire</button>
+        </form>
+    </div>
+
+    <script>
+        const paiementOption = document.getElementById('paiementOption');
+        const monthsSelectionContainer = document.getElementById('monthsSelectionContainer');
+
+        paiementOption.addEventListener('change', () => {
+            monthsSelectionContainer.innerHTML = '';
+            if (paiementOption.value === '3x') {
+                for (let i = 1; i <= 3; i++) {
+                    const monthSelect = document.createElement('select');
+                    monthSelect.name = `moisPaiement${i}`;
+                    monthSelect.required = true;
+                    ['Septembre', 'Octobre', 'Novembre', 'Décembre','Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', ].forEach(month => {
+                        const option = document.createElement('option');
+                        option.value = month;
+                        option.textContent = month;
+                        monthSelect.appendChild(option);
+                    });
+                    monthsSelectionContainer.appendChild(monthSelect);
+                }
+            } else if (paiementOption.value === '5x') {
+                for (let i = 1; i <= 5; i++) {
+                    const monthSelect = document.createElement('select');
+                    monthSelect.name = `moisPaiement${i}`;
+                    monthSelect.required = true;
+                    ['Septembre', 'Octobre', 'Novembre', 'Décembre','Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août'].forEach(month => {
+                        const option = document.createElement('option');
+                        option.value = month;
+                        option.textContent = month;
+                        monthSelect.appendChild(option);
+                    });
+                    monthsSelectionContainer.appendChild(monthSelect);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
