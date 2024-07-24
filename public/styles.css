@@ -1,29 +1,49 @@
+/* Variables CSS */
+:root {
+    --background-color: #f4f4f4;
+    --container-bg-color: #fff;
+    --primary-color: #28a745;
+    --primary-hover-color: #218838;
+    --text-color: #333;
+    --border-color: #ccc;
+    --padding: 20px;
+    --border-radius: 8px;
+    --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --input-padding: 10px;
+    --input-border-radius: 4px;
+    --font-size: 16px;
+}
+
+/* Global Styles */
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--background-color);
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100vh;
 }
 
+/* Container Styles */
 .container {
-    background: #fff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: var(--container-bg-color);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
     width: 100%;
     max-width: 600px;
+    margin-top: 1500px; /* Ajout d'un margin-top pour espacer du haut de la page */
 }
 
+/* Heading Styles */
 h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: var(--text-color);
 }
 
+/* Form Group Styles */
 .form-group {
     margin-bottom: 15px;
 }
@@ -31,7 +51,7 @@ h2 {
 .form-group label {
     display: block;
     margin-bottom: 5px;
-    color: #333;
+    color: var(--text-color);
 }
 
 .form-group input[type="text"],
@@ -39,18 +59,20 @@ h2 {
 .form-group input[type="file"],
 .form-group input[type="radio"] {
     width: calc(100% - 22px);
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    padding: var(--input-padding);
+    border: 1px solid var(--border-color);
+    border-radius: var(--input-border-radius);
     box-sizing: border-box;
 }
 
+/* Payment Options Styles */
 .payment-options label {
     display: inline-block;
     margin-right: 10px;
-    color: #333;
+    color: var(--text-color);
 }
 
+/* Month Selection Styles */
 .month-selection {
     margin-top: 15px;
 }
@@ -58,20 +80,21 @@ h2 {
 .month-selection label {
     display: block;
     margin: 5px 0;
-    color: #333;
+    color: var(--text-color);
 }
 
+/* Button Styles */
 button {
     width: 100%;
-    padding: 10px;
+    padding: var(--input-padding);
     border: none;
-    border-radius: 4px;
-    background-color: #28a745;
+    border-radius: var(--input-border-radius);
+    background-color: var(--primary-color);
     color: white;
-    font-size: 16px;
+    font-size: var(--font-size);
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #218838;
+    background-color: var(--primary-hover-color);
 }
