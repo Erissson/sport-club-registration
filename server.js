@@ -35,7 +35,7 @@ app.use(express.json());
 app.use(express.static('public'));
 
 app.post('/submit', upload.single('file'), (req, res) => {
-    const { nom, prenom, secu, civilite, dateDeNaissance, localisation, codePostale, Ville, email, tel,DojoOption, paiementOption, moisPaiement } = req.body;
+    const { nom, prenom, secu, civilite, dateDeNaissance, localisation, codePostale, Ville, email, tel,DojoOption, paiementOption, CGA,REP1_nom,REP1_prenom,Parent1,REP1_adresse,REP1_codePostale,REP1_Ville,REP1_email,REP1_tel,REP2_nom,REP2_prenom,Parent2,REP2_adresse,REP2_codePostale,REP2_Ville,REP2_email,REP2_tel, } = req.body;
     const file = req.file;
 
     const userData = {
@@ -51,7 +51,23 @@ app.post('/submit', upload.single('file'), (req, res) => {
         tel,
         DojoOption,
         paiementOption,
-        moisPaiement: moisPaiement ? moisPaiement.split(',') : [],
+        CGA,
+        REP1_nom,
+        REP1_prenom,
+        Parent1,
+        REP1_adresse,
+        REP1_codePostale,
+        REP1_Ville,
+        REP1_email,
+        REP1_tel,
+        REP2_nom,
+        REP2_prenom,
+        Parent2,
+        REP2_adresse,
+        REP2_codePostale,
+        REP2_Ville,
+        REP2_email,
+        REP2_tel,
         filePath: file ? file.path : null
     };
 
